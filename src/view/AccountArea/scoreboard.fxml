@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<?import javafx.scene.text.Font?>
+
+<GridPane alignment="CENTER" hgap="10.0" vgap="10.0"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="view.AccountArea.scoreboardController" styleClass="gridpane">
+    <stylesheets>
+        <URL value="@accountArea.css"/>
+    </stylesheets>
+    <VBox alignment="CENTER" spacing="30">
+        <Label text="Scoreboard" alignment="TOP_CENTER" styleClass="mainText" textAlignment="CENTER"
+               GridPane.columnIndex="0" GridPane.rowIndex="0">
+            <font>
+                <Font name="Century Gothic" size="32.0"/>
+            </font>
+        </Label>
+    </VBox>
+    <TableView fx:id="tableView" GridPane.columnIndex="0" styleClass="table"
+               GridPane.rowIndex="1">
+        <columns>
+            <TableColumn prefWidth="120.0" text="username" fx:id="username"/>
+            <TableColumn prefWidth="100.0" text="score" fx:id="score"/>
+            <TableColumn prefWidth="100.0" text="wins" fx:id="wins"/>
+            <TableColumn prefWidth="100.0" text="draws" fx:id="draws"/>
+            <TableColumn prefWidth="100.0" text="looses" fx:id="looses"/>
+        </columns>
+    </TableView>
+    <Button text="Back"
+            onAction="#handleBackButtonAction" alignment="BOTTOM_LEFT" GridPane.rowIndex="5"
+            styleClass="button"/>
+</GridPane>

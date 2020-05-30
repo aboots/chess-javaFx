@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.text.Font?>
+<GridPane fx:controller="view.AccountArea.AccountArea"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10" styleClass="gridpane">
+    <stylesheets>
+        <URL value="@accountArea.css"/>
+    </stylesheets>
+    <VBox alignment="CENTER" spacing="30">
+        <Label text="Account area" styleClass="mainText" textAlignment="CENTER" alignment="TOP_CENTER" textFill="black" >
+            <font >
+                <Font name="Century Gothic" size="32.0" />
+            </font>
+        </Label>
+        <Button text="New game"
+                onAction="#handleNewGameButtonAction"
+                styleClass="button" alignment="BASELINE_CENTER" prefHeight="80" prefWidth="200"/>
+        <Button text="Scoreboard"
+                onAction="#handleScoreboardButtonAction" styleClass="button"
+                alignment="BASELINE_CENTER" prefHeight="80" prefWidth="200"/>
+        <Button text="logout"
+                onAction="#handleLogoutButtonAction" lineSpacing="4"
+                styleClass="button" alignment="BASELINE_CENTER" prefHeight="80" prefWidth="200"/>
+    </VBox>
+</GridPane>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<?import java.net.URL?>
+<?import javafx.scene.text.Text?>
+<GridPane fx:controller="view.AccountArea.AccountArea"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10" styleClass="gridpane">
+    <stylesheets>
+        <URL value="@accountArea.css"/>
+    </stylesheets>
+    <VBox alignment="CENTER" spacing="30">
+        <Label text="Game Setting" styleClass="MainText" textAlignment="CENTER" alignment="TOP_CENTER" textFill="black">
+            <font>
+                <Font name="Century Gothic" size="32.0"/>
+            </font>
+        </Label>
+        <Text text="enter infromation for game setting"
+              GridPane.columnIndex="0" GridPane.rowIndex="0"
+              GridPane.columnSpan="2">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </Text>
+        <Label text="Opponent username: "
+               GridPane.columnIndex="0" GridPane.rowIndex="1">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="opponentUsername" promptText="username"
+                   GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+        <Label text="Turn limit : "
+               GridPane.columnIndex="0" GridPane.rowIndex="2">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="turnLimit" promptText="turn limit"
+                   GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        <Label text="undo number : "
+               GridPane.columnIndex="0" GridPane.rowIndex="3">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="undoNumber" promptText="undo number"
+                   GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+        <Label text="time limit for move (second) : "
+               GridPane.columnIndex="0" GridPane.rowIndex="4">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="timeLimit" promptText="time limit"
+                   GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+        <Button text="start game"
+                onAction="#handleStartGameButtonAction" GridPane.columnIndex="8" GridPane.rowIndex="10"
+                styleClass="button"/>
+    </VBox>
+    <Button text="Back"
+            onAction="#handleBackButtonAction" alignment="BOTTOM_LEFT" GridPane.rowIndex="14"
+            styleClass="button"/>
+</GridPane>

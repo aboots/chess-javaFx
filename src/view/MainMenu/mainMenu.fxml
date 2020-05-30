@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import java.net.URL?>
+<?import javafx.scene.text.Font?>
+<GridPane fx:controller="view.MainMenu.MainMenuController"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10" styleClass="gridpane">
+    <stylesheets>
+        <URL value="@MainMenu.css"/>
+    </stylesheets>
+
+    <VBox alignment="CENTER" spacing="30">
+        <Label text="Main Menu" styleClass="mainText" textAlignment="CENTER" alignment="TOP_CENTER" textFill="black" >
+            <font >
+                <Font name="Century Gothic" size="32.0" />
+            </font>
+        </Label>
+        <Button text="Register"
+                onAction="#handleRegisterButtonAction"
+                styleClass="button" alignment="BASELINE_CENTER" prefHeight="80" prefWidth="200"/>
+        <Button text="Login"
+                onAction="#handleLoginButtonAction" styleClass="button"
+                alignment="BASELINE_CENTER" prefHeight="80" prefWidth="200"/>
+        <Button text="change password"
+                onAction="#handleChangePasswordButtonAction" lineSpacing="4"
+                styleClass="button" alignment="BASELINE_CENTER" prefHeight="80" prefWidth="200"/>
+        <Button text="Remove users"
+                onAction="#handleRemoveButtonAction" styleClass="button"
+                alignment="BASELINE_CENTER" prefHeight="80" prefWidth="200"/>
+        <Button text="exit"
+                onAction="#handleExitButtonAction" lineSpacing="4"
+                styleClass="button" alignment="BASELINE_CENTER" prefHeight="80" prefWidth="200"/>
+    </VBox>
+</GridPane>

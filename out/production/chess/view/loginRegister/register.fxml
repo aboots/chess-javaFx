@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<?import java.net.URL?>
+<?import javafx.scene.text.Text?>
+<GridPane fx:controller="view.loginRegister.ControllerForRegisterringMenu"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10" styleClass="gridpane">
+    <stylesheets>
+        <URL value="@BaseStyleForRegisteringMenus.css"/>
+    </stylesheets>
+    <VBox alignment="CENTER" spacing="30">
+        <Label text="Register" styleClass="MainText" textAlignment="CENTER" alignment="TOP_CENTER" textFill="black">
+            <font>
+                <Font name="Century Gothic" size="32.0"/>
+            </font>
+        </Label>
+        <Text text="enter your username and password"
+              GridPane.columnIndex="0" GridPane.rowIndex="0"
+              GridPane.columnSpan="2">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </Text>
+        <Label text="User name:"
+               GridPane.columnIndex="0" GridPane.rowIndex="1">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="textField" promptText="username"
+                GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+        <Label text="Password:"
+               GridPane.columnIndex="0" GridPane.rowIndex="2">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+
+        <PasswordField fx:id="passwordField" promptText="password"
+                       GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        <Button text="Register"
+                onAction="#handleRegisterButtonAction" GridPane.columnIndex="5" GridPane.rowIndex="5"
+                styleClass="button"/>
+    </VBox>
+    <Button text="Back"
+            onAction="#handleBackButtonAction" alignment="BOTTOM_LEFT" GridPane.rowIndex="18"
+            styleClass="button"/>
+</GridPane>

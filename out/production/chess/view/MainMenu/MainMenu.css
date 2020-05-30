@@ -1,0 +1,38 @@
+.button {
+
+  -fx-padding: 12px 28px;
+  -fx-background-color: #4CAF50;
+  -fx-background-radius: 8px;
+  -fx-color: white;
+  -fx-text-fill: white;
+  -fx-margin: 4px 2px;
+  -fx-border-radius: 8px;
+  -fx-border-color:white;
+  -fx-border-width: 2 2 2 2;
+  -fx-width: 100%;
+  -fx-font-size:15;
+}
+.button {
+  -fx-transition-duration: 0.4s;
+}
+
+.button: hover {
+  -fx-background-color: white;
+   -fx-text-fill: #4CAF50;
+  -fx-color: #4CAF50;
+  -fx-border-color:#4CAF50;
+  -fx-border-width: 2 2 2 2;
+  -fx-background-radius: 8px;
+  -fx-cursor: hand;
+}
+
+.mainText{
+  -fx-text-align: center;
+  -fx-padding: 100px;
+  -fx-fill-color:#4CAF50;
+  -fx-fill-font-size: 40;
+}
+
+.gridpane{
+ -fx-background-color:#ffffcc;
+}
