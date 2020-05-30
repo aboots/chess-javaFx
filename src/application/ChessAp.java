@@ -32,12 +32,12 @@ public class ChessAp extends Application {
     public static void playMusic(boolean show) {
         URL resource2 = ChessAp.class.getResource("/Resources/musics/chess.wav");
         AudioClip audioClip = new AudioClip(resource2.toExternalForm());
-        audioClip.setVolume(0.04);
+        audioClip.setVolume(0.03);
         audioClip.setCycleCount(INDEFINITE);
         if (show) {
             audioClip.play();
             System.out.println("music played");
-        }else{
+        } else {
             audioClip.stop();
             System.out.println("music stoped");
         }

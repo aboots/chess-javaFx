@@ -1,9 +1,10 @@
 package logicControllers;
 
+import javafx.scene.control.ChoiceDialog;
 import model.Move;
 import model.Player;
 import model.User;
-import model.pieces.Pawn;
+import model.pieces.*;
 import view.Game.Game;
 
 import java.util.ArrayList;
@@ -144,6 +145,8 @@ public class GameLogicController {
                 this.endOfMatchOneWin(playerBlack, playerWhite);
                 throw new Exception("player " + playerBlack.getUser().getUserName() + " with color black won");
             }
+            if (playerBlack.getSelectedPiece() instanceof Pawn)
+                checkPawn((Pawn) playerBlack.getSelectedPiece(), "black");
             playerBlack.setUndoThisTurn(false);
             playerBlack.setSelectedPiece(null);
             playerBlack.setPlayerMoveInTurn(false);
@@ -162,6 +165,8 @@ public class GameLogicController {
                 this.endOfMatchOneWin(playerWhite, playerBlack);
                 throw new Exception("player " + playerWhite.getUser().getUserName() + " with color white won");
             }
+            if (playerWhite.getSelectedPiece() instanceof Pawn)
+                checkPawn((Pawn) playerWhite.getSelectedPiece(), "white");
             playerBlack.setThisPlayerTurn(true);
             playerWhite.setThisPlayerTurn(false);
             playerBlack.setUndoThisTurn(false);
@@ -182,6 +187,55 @@ public class GameLogicController {
         }
 
         return false;
+    }
+
+    private void checkPawn(Pawn piece, String team) {
+        if (team.equals("black")) {
+            if (piece.getX() != 1)
+                return;
+        } else if (team.equals("white")) {
+            if (piece.getX() != 8)
+                return;
+        }
+        String choices[] = {"Queen", "Bishop", "Rook", "Knight"};
+        ChoiceDialog dialog = new ChoiceDialog(choices[0], choices);
+        dialog.setHeaderText("choice to convert your pawn!");
+        dialog.setContentText("please choice a piece that you want your pawn to convert to it");
+        dialog.showAndWait();
+        if (dialog.getSelectedItem().equals("Queen")) {
+            addPiece(piece, team, "Queen");
+        } else if (dialog.getSelectedItem().equals("Bishop")) {
+            addPiece(piece, team, "Bishop");
+        } else if (dialog.getSelectedItem().equals("Rook")) {
+            addPiece(piece, team, "Rook");
+        } else if (dialog.getSelectedItem().equals("Knight")) {
+            addPiece(piece, team, "Knight");
+        }
+    }
+
+    private void addPiece(Pawn piece, String team, String newPieceType) {
+        if (newPieceType.equals("Bishop")) {
+            if (team.equals("black"))
+                piece.getPlayer().addPiece(new Bishop(piece.getPlayer(), "Bb", 1, piece.getY(), true, "black"));
+            else
+                piece.getPlayer().addPiece(new Bishop(piece.getPlayer(), "Bw", 8, piece.getY(), true, "white"));
+        } else if (newPieceType.equals("Knight")) {
+            if (team.equals("black"))
+                piece.getPlayer().addPiece(new Knight(piece.getPlayer(), "Nb", 1, piece.getY(), true, "black"));
+            else
+                piece.getPlayer().addPiece(new Knight(piece.getPlayer(), "Nw", 8, piece.getY(), true, "white"));
+        } else if (newPieceType.equals("Queen")) {
+            if (team.equals("black"))
+                piece.getPlayer().addPiece(new Queen(piece.getPlayer(), "Qb", 1, piece.getY(), true, "black"));
+            else
+                piece.getPlayer().addPiece(new Queen(piece.getPlayer(), "Qw", 8, piece.getY(), true, "white"));
+        } else if (newPieceType.equals("Rook")) {
+            if (team.equals("black"))
+                piece.getPlayer().addPiece(new Rook(piece.getPlayer(), "Rb", 1, piece.getY(), true, "black"));
+            else
+                piece.getPlayer().addPiece(new Rook(piece.getPlayer(), "Rw", 8, piece.getY(), true, "white"));
+        }
+        piece.getPlayer().deleteDeadPiece(piece);
     }
 
     private boolean isPlayerWin(Player player, Player enemy) {

@@ -66,7 +66,7 @@ public class Game extends FxmlController {
                     playErrorMusic();
                     alert.setTitle("lose");
                     alert.setHeaderText("lose beacase of time");
-                    alert.setContentText("your time ends and you lose match");
+                    alert.setContentText(gameLogicController.forfeitprocess());
                     alert.show();
                     playMusic(false);
                     setScene("/view/AccountArea/accountArea.fxml", "Chess");
@@ -136,6 +136,8 @@ public class Game extends FxmlController {
         if (result.get() == ButtonType.OK) {
             showAlert(Alert.AlertType.INFORMATION, "end of match", "forfeit", gameLogicController.forfeitprocess());
             playMusic(false);
+            time.stop();
+            time.getKeyFrames().remove(frame);
             setScene("/view/AccountArea/accountArea.fxml", "Chess");
         }
     }
@@ -248,10 +250,14 @@ public class Game extends FxmlController {
             if (exception.getMessage().startsWith("End of match")) {
                 showAlert(Alert.AlertType.INFORMATION, "end of match", "draw", exception.getMessage());
                 playMusic(false);
+                time.stop();
+                time.getKeyFrames().remove(frame);
                 setScene("/view/AccountArea/accountArea.fxml", "Chess");
             } else if (exception.getMessage().startsWith("player ")) {
                 showAlert(Alert.AlertType.INFORMATION, "end of match", "winnn!!", exception.getMessage());
                 playMusic(false);
+                time.stop();
+                time.getKeyFrames().remove(frame);
                 setScene("/view/AccountArea/accountArea.fxml", "Chess");
             } else
                 showAlert(Alert.AlertType.ERROR, "next turn", "error for next turn", exception.getMessage());
