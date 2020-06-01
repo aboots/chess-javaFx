@@ -8,7 +8,6 @@ import model.Player;
 import javafx.scene.image.ImageView;
 
 
-
 public abstract class Piece {
     private GameLogicController gameLogicController;
     private Player player;

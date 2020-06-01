@@ -15,7 +15,7 @@ public class AccountAreaLogicController {
         return User.sortUsersBaseOnScore();
     }
 
-    public static void startNewGame(String userName, String limit, String undoNumber,String timeLimit) throws Exception {
+    public static void startNewGame(String userName, String limit, String undoNumber, String timeLimit) throws Exception {
         if (!limit.matches("^(-?\\d+)$"))
             throw new Exception("turn  should be a number!");
         if (!undoNumber.matches("^(\\d+)$"))

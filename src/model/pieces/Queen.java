@@ -17,9 +17,9 @@ public class Queen extends Piece {
     }
 
     protected void setImageViewForEachPiece() {
-        if (team.equals("black")){
+        if (team.equals("black")) {
             this.setImageView(new ImageView(new Image("/Resources/piecesphotos/black_queen.png")));
-        }else{
+        } else {
             this.setImageView(new ImageView(new Image("/Resources/piecesphotos/white_queen.png")));
         }
     }

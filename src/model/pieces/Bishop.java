@@ -17,12 +17,13 @@ public class Bishop extends Piece {
     }
 
     protected void setImageViewForEachPiece() {
-        if (team.equals("black")){
+        if (team.equals("black")) {
             this.setImageView(new ImageView(new Image("/Resources/piecesphotos/black_bishop.png")));
-        }else{
+        } else {
             this.setImageView(new ImageView(new Image("/Resources/piecesphotos/white_bishop.png")));
         }
     }
+
     @Override
     public boolean canPieceMove(Player player, Player enemy, int toX, int toY) {
 

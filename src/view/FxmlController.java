@@ -62,7 +62,7 @@ public abstract class FxmlController {
         System.out.println("effect played");
     }
 
-    public void playChessPieceMusics(){
+    public void playChessPieceMusics() {
         URL resource2 = ChessAp.class.getResource("/Resources/musics/chessMove.wav");
         realPlay(resource2);
     }

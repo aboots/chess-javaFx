@@ -20,9 +20,9 @@ public class King extends Piece {
     }
 
     protected void setImageViewForEachPiece() {
-        if (team.equals("black")){
+        if (team.equals("black")) {
             this.setImageView(new ImageView(new Image("/Resources/piecesphotos/black_king.png")));
-        }else{
+        } else {
             this.setImageView(new ImageView(new Image("/Resources/piecesphotos/white_king.png")));
         }
     }

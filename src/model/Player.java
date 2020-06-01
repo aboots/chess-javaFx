@@ -16,9 +16,9 @@ public class Player {
     private boolean playerMoveInTurn;
     private boolean undoThisTurn;
 
-    public Player(User user, int undoRemaining, boolean isThisPlayerTurn, String team,GameLogicController gameLogicController) {
+    public Player(User user, int undoRemaining, boolean isThisPlayerTurn, String team, GameLogicController gameLogicController) {
         this.user = user;
-        this.gameLogicController=gameLogicController;
+        this.gameLogicController = gameLogicController;
         this.pieces = new ArrayList<>();
         this.undoRemaining = undoRemaining;
         this.isThisPlayerTurn = isThisPlayerTurn;

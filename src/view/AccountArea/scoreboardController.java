@@ -17,12 +17,18 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class scoreboardController extends FxmlController implements Initializable {
-    @FXML private TableView<User> tableView;
-    @FXML private TableColumn<User, String> username;
-    @FXML private TableColumn<User, String> score;
-    @FXML private TableColumn<User, String> wins;
-    @FXML private TableColumn<User, String> looses;
-    @FXML private TableColumn<User, String> draws;
+    @FXML
+    private TableView<User> tableView;
+    @FXML
+    private TableColumn<User, String> username;
+    @FXML
+    private TableColumn<User, String> score;
+    @FXML
+    private TableColumn<User, String> wins;
+    @FXML
+    private TableColumn<User, String> looses;
+    @FXML
+    private TableColumn<User, String> draws;
 
 
     @Override

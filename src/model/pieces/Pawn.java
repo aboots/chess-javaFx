@@ -38,8 +38,8 @@ public class Pawn extends Piece {
         return numberOfMoves;
     }
 
-    public void moved(){
-        if(!this.isDidFirstMove())
+    public void moved() {
+        if (!this.isDidFirstMove())
             setDidFirstMove(true);
         this.numberOfMoves++;
     }

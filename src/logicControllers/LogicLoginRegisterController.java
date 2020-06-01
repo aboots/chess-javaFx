@@ -63,7 +63,7 @@ public class LogicLoginRegisterController {
         return true;
     }
 
-    public static void changePassword(String userName, String oldPassword,String newPassword) throws Exception {
+    public static void changePassword(String userName, String oldPassword, String newPassword) throws Exception {
         User user = User.getUserByName(userName);
         if (isUserNameAndPassWordValid(userName, oldPassword)) {
             if (user == null) {

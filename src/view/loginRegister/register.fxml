@@ -34,7 +34,7 @@
             </font>
         </Label>
         <TextField fx:id="textField" promptText="username"
-                GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                   GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 
         <Label text="Password:"
                GridPane.columnIndex="0" GridPane.rowIndex="2">
