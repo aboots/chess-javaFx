@@ -291,7 +291,7 @@ public class GameLogicController {
                 pawn.setNumberOfMoves(pawn.getNumberOfMoves() - 1);
             }
         }
-        game.UndoMoveAnimation(move.getFromX(),move.getFromY());
+        game.UndoMoveAnimation(move.getFromX(), move.getFromY());
         System.out.println("undo completed");
     }
 
