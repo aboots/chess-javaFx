@@ -146,9 +146,6 @@ public class Game extends FxmlController {
         playButtonMusic();
         try {
             gameLogicController.undoProcess();
-            time.stop();
-            time.getKeyFrames().remove(frame);
-            this.run();
         } catch (Exception exception) {
             showAlert(Alert.AlertType.ERROR, "undo", "error for undo", exception.getMessage());
         }
@@ -318,11 +315,12 @@ public class Game extends FxmlController {
                             try {
                                 if (gameLogicController.movePiece(playerWhichIsTurned, 10 - row2, col2 - 2, enemy)) {
                                     System.out.println("can move");
+                                    animationOfMove(square);
                                 }
                             } catch (Exception exception) {
                                 showAlert(Alert.AlertType.ERROR, "error for moving", "error occured", exception.getMessage());
                             }
-                            movePieceShow();
+                            // movePieceShow();
                         }
                     }
                 };
@@ -352,6 +350,46 @@ public class Game extends FxmlController {
         this.run();
     }
 
+    public void animationOfMove(Rectangle square) {
+        Player playerWhichIsTurned;
+        if (gameLogicController.getPlayerWhite().isThisPlayerTurn()) {
+            playerWhichIsTurned = gameLogicController.getPlayerWhite();
+        } else {
+            playerWhichIsTurned = gameLogicController.getPlayerBlack();
+        }
+        ImageView image = playerWhichIsTurned.getSelectedPiece().getImageView();
+        double toY = ((double) GridPane.getRowIndex(square) - GridPane.getRowIndex(image)) * square.getHeight();
+        double toX = ((double) GridPane.getColumnIndex(square) - GridPane.getColumnIndex(image)) * square.getWidth();
+        TranslateTransition transition = new TranslateTransition();
+        transition.setNode(image);
+        transition.setDuration(Duration.millis(800));
+        transition.setCycleCount(1);
+        transition.setToX(toX);
+        transition.setToY(toY);
+        transition.play();
+        transition.setOnFinished(e -> undoAnimationAfterNormalMove());
+        System.out.println("animation");
+    }
+
+    private void undoAnimationAfterNormalMove() {
+        Player playerWhichIsTurned;
+        if (gameLogicController.getPlayerWhite().isThisPlayerTurn()) {
+            playerWhichIsTurned = gameLogicController.getPlayerWhite();
+        } else {
+            playerWhichIsTurned = gameLogicController.getPlayerBlack();
+        }
+        ImageView image = playerWhichIsTurned.getSelectedPiece().getImageView();
+        TranslateTransition transition = new TranslateTransition();
+        transition.setNode(image);
+        transition.setDuration(Duration.millis(0.1));
+        transition.setCycleCount(1);
+        transition.setToX(0);
+        transition.setToY(0);
+        transition.play();
+        transition.setOnFinished(e -> movePieceShow());
+        System.out.println("undo after normal move!");
+    }
+
     public void showAvailablepathes(int[][] availableTiles) {
         availablepathes = availableTiles;
         time.stop();
@@ -361,5 +399,51 @@ public class Game extends FxmlController {
 
     public int[][] getAvailablepathes() {
         return availablepathes;
+    }
+
+    public void UndoMoveAnimation(int fromX, int fromY) {
+        Player playerWhichIsTurned;
+        if (gameLogicController.getPlayerWhite().isThisPlayerTurn()) {
+            playerWhichIsTurned = gameLogicController.getPlayerWhite();
+        } else {
+            playerWhichIsTurned = gameLogicController.getPlayerBlack();
+        }
+        ImageView image = playerWhichIsTurned.getSelectedPiece().getImageView();
+        double toY = ((double) (10 - fromX) - GridPane.getRowIndex(image)) * 75;
+        double toX = ((double) (fromY + 2) - GridPane.getColumnIndex(image)) * 75;
+        TranslateTransition transition = new TranslateTransition();
+        transition.setNode(image);
+        transition.setDuration(Duration.millis(900));
+        transition.setCycleCount(1);
+        transition.setToX(toX);
+        transition.setToY(toY);
+        transition.play();
+        transition.setOnFinished(e -> afterundoMove());
+        System.out.println("undo animation");
+    }
+
+    private void afterundoMove() {
+        Player playerWhichIsTurned;
+        if (gameLogicController.getPlayerWhite().isThisPlayerTurn()) {
+            playerWhichIsTurned = gameLogicController.getPlayerWhite();
+        } else {
+            playerWhichIsTurned = gameLogicController.getPlayerBlack();
+        }
+        ImageView image = playerWhichIsTurned.getSelectedPiece().getImageView();
+        TranslateTransition transition = new TranslateTransition();
+        transition.setNode(image);
+        transition.setDuration(Duration.millis(0.1));
+        transition.setCycleCount(1);
+        transition.setToX(0);
+        transition.setToY(0);
+        transition.play();
+        transition.setOnFinished(e -> undoProcessEndAfterAnimations());
+        System.out.println("undo after undo move!");
+    }
+
+    private void undoProcessEndAfterAnimations() {
+        time.stop();
+        time.getKeyFrames().remove(frame);
+        this.run();
     }
 }

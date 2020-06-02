@@ -13,9 +13,9 @@
     </stylesheets>
 
     <VBox alignment="CENTER" spacing="30">
-        <Label text="Main Menu" styleClass="mainText" textAlignment="CENTER" alignment="TOP_CENTER" textFill="black" >
-            <font >
-                <Font name="Century Gothic" size="32.0" />
+        <Label text="Main Menu" styleClass="mainText" textAlignment="CENTER" alignment="TOP_CENTER" textFill="black">
+            <font>
+                <Font name="Century Gothic" size="32.0"/>
             </font>
         </Label>
         <Button text="Register"
