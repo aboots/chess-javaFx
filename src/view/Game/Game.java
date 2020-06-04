@@ -29,6 +29,7 @@ import javafx.scene.text.Font;
 import javafx.util.Duration;
 import logicControllers.GameLogicController;
 import model.Player;
+import model.pieces.Piece;
 import view.FxmlController;
 
 import java.util.Arrays;
@@ -401,14 +402,8 @@ public class Game extends FxmlController {
         return availablepathes;
     }
 
-    public void UndoMoveAnimation(int fromX, int fromY) {
-        Player playerWhichIsTurned;
-        if (gameLogicController.getPlayerWhite().isThisPlayerTurn()) {
-            playerWhichIsTurned = gameLogicController.getPlayerWhite();
-        } else {
-            playerWhichIsTurned = gameLogicController.getPlayerBlack();
-        }
-        ImageView image = playerWhichIsTurned.getSelectedPiece().getImageView();
+    public void UndoMoveAnimation(int fromX, int fromY, Piece piece) {
+        ImageView image = piece.getImageView();
         double toY = ((double) (10 - fromX) - GridPane.getRowIndex(image)) * 75;
         double toX = ((double) (fromY + 2) - GridPane.getColumnIndex(image)) * 75;
         TranslateTransition transition = new TranslateTransition();
@@ -418,18 +413,12 @@ public class Game extends FxmlController {
         transition.setToX(toX);
         transition.setToY(toY);
         transition.play();
-        transition.setOnFinished(e -> afterundoMove());
+        transition.setOnFinished(e -> afterundoMove(piece));
         System.out.println("undo animation");
     }
 
-    private void afterundoMove() {
-        Player playerWhichIsTurned;
-        if (gameLogicController.getPlayerWhite().isThisPlayerTurn()) {
-            playerWhichIsTurned = gameLogicController.getPlayerWhite();
-        } else {
-            playerWhichIsTurned = gameLogicController.getPlayerBlack();
-        }
-        ImageView image = playerWhichIsTurned.getSelectedPiece().getImageView();
+    private void afterundoMove(Piece piece) {
+        ImageView image = piece.getImageView();
         TranslateTransition transition = new TranslateTransition();
         transition.setNode(image);
         transition.setDuration(Duration.millis(0.1));

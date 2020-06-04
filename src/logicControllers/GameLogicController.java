@@ -275,7 +275,6 @@ public class GameLogicController {
         Move move = moves.get(moves.size() - 1);
         moves.remove(move);
         player.setPlayerMoveInTurn(false);
-        //player.setSelectedPiece(move.getPiece());
         move.getPiece().setX(move.getFromX());
         move.getPiece().setY(move.getFromY());
         if (move.getKilledPiece() != null) {
@@ -291,7 +290,7 @@ public class GameLogicController {
                 pawn.setNumberOfMoves(pawn.getNumberOfMoves() - 1);
             }
         }
-        game.UndoMoveAnimation(move.getFromX(), move.getFromY());
+        game.UndoMoveAnimation(move.getFromX(), move.getFromY(), move.getPiece());
         System.out.println("undo completed");
     }
 
@@ -311,5 +310,9 @@ public class GameLogicController {
         enemy.getUser().setWins(enemy.getUser().getWins() + 1);
         System.out.println("you have forfeited");
         return "player " + enemy.getUser().getUserName() + " with color " + enemy.getTeam() + " won";
+    }
+
+    public ArrayList<Move> getMoves() {
+        return moves;
     }
 }

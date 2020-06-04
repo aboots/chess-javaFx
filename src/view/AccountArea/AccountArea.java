@@ -64,7 +64,6 @@ public class AccountArea extends FxmlController {
             gameLogicController.getGame().run();
         } catch (Exception e) {
             showAlert(Alert.AlertType.ERROR, "error occured during starting game", "error occured", e.getMessage());
-            e.printStackTrace();
         }
     }
 }
